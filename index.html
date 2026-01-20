@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Digital - Matemática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- PORTADA -->
+    <div id="portada" class="portada">
+        <div class="portada-content">
+            <h1>📐 MATEMÁTICA</h1>
+            <h2 style="color: #71B280; margin-bottom: 30px; font-size: 1.6em; font-weight: 400; letter-spacing: 3px;">PORTAFOLIO DIGITAL</h2>
+            
+            <div class="info-estudiante">
+                <h3 style="margin-bottom: 15px; font-size: 1.5em;">Información del Estudiante</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Nombre:</strong>
+                        <span>Henry Jesús Montenegro Alvarez</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Semestre:</strong>
+                        <span>Tercero</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Paralelo:</strong>
+                        <span>A</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Institución:</strong>
+                        <span>Universidad Central del Ecuador</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Docente:</strong>
+                        <span>Msc. Diego Tipan</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Período:</strong>
+                        <span>2025-2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-ingresar" onclick="ingresarPortafolio()">
+                Ingresar al Portafolio →
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav id="navbar" style="display: none;">
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="mostrarSeccion('portafolio')">
+                📁 Portafolio Virtual
+            </button>
+            <button class="nav-btn" onclick="mostrarSeccion('ejercicios')">
+                ✏️ Ejercicios de Clase
+            </button>
+            <button class="nav-btn" onclick="mostrarSeccion('materia')">
+                📚 Materia
+            </button>
+            <button class="nav-btn" onclick="volverPortada()">
+                🏠 Portada
+            </button>
+        </div>
+    </nav>
+
+    <!-- PORTAFOLIO VIRTUAL -->
+    <div id="portafolio" class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>📁 Portafolio Virtual</h2>
+                <p>Todos los trabajos del portafolio físico digitalizados</p>
+            </div>
+
+            <!-- BOTÓN DESCARGAR TODO -->
+            <div class="download-all-container">
+                <h3 style="color: #134E5E; margin-bottom: 15px;">💾 Descarga Completa</h3>
+                <p style="color: #666; margin-bottom: 20px;">Descarga todos los trabajos en un solo archivo ZIP</p>
+                <a href="pdfs/portafolio_completo.zip" class="download-all-btn">
+                    📦 Descargar Todos los Trabajos
+                </a>
+                <div class="edit-note" style="margin-top: 20px;">
+                    <strong>📝 Instrucciones:</strong>
+                    Crea un archivo ZIP con todos tus PDFs y nómbralo "portafolio_completo.zip" en la carpeta "pdfs/"
+                </div>
+            </div>
+
+            <div class="edit-note">
+                <strong>📝 Instrucciones:</strong>
+                Agrega o elimina tarjetas según la cantidad de trabajos que tengas. Cada PDF escaneado debe estar en la carpeta "pdfs/"
+            </div>
+
+            <div class="portafolio-grid">
+                <div class="portafolio-card">
+                    <div class="card-header">
+                        <div class="pdf-icon-large">📄</div>
+                        <h3>Trabajo 1</h3>
+                        <p>[Título del Trabajo]</p>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Tema:</strong> [Descripción breve]</p>
+                        <a href="pdfs/trabajo1.pdf" class="download-btn" target="_blank">
+                            📥 Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portafolio-card">
+                    <div class="card-header">
+                        <div class="pdf-icon-large">📄</div>
+                        <h3>Trabajo 2</h3>
+                        <p>[Título del Trabajo]</p>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Tema:</strong> [Descripción breve]</p>
+                        <a href="pdfs/trabajo2.pdf" class="download-btn" target="_blank">
+                            📥 Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portafolio-card">
+                    <div class="card-header">
+                        <div class="pdf-icon-large">📄</div>
+                        <h3>Trabajo 3</h3>
+                        <p>[Título del Trabajo]</p>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Tema:</strong> [Descripción breve]</p>
+                        <a href="pdfs/trabajo3.pdf" class="download-btn" target="_blank">
+                            📥 Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portafolio-card">
+                    <div class="card-header">
+                        <div class="pdf-icon-large">📄</div>
+                        <h3>Trabajo 4</h3>
+                        <p>[Título del Trabajo]</p>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Tema:</strong> [Descripción breve]</p>
+                        <a href="pdfs/trabajo4.pdf" class="download-btn" target="_blank">
+                            📥 Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Agrega más tarjetas según necesites -->
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIOS DE CLASE -->
+    <div id="ejercicios" class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>✏️ Ejercicios Hechos en Clase</h2>
+                <p>Ejercicios resueltos durante las clases</p>
+            </div>
+
+            <div class="edit-note">
+                <strong>📝 Instrucciones:</strong>
+                Agrega tus ejercicios escaneados o fotografiados. Puedes organizarlos por unidad o por fecha.
+            </div>
+
+            <div class="ejercicios-grid">
+                <div class="ejercicio-card">
+                    <div class="ejercicio-header">
+                        <h3>✍️ Ejercicio 1</h3>
+                        <p>[Título o Tema]</p>
+                    </div>
+                    <div class="ejercicio-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
+                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
+                        <a href="pdfs/ejercicios/ejercicio1.pdf" class="view-btn" target="_blank">
+                            👁️ Ver Ejercicio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-header">
+                        <h3>✍️ Ejercicio 2</h3>
+                        <p>[Título o Tema]</p>
+                    </div>
+                    <div class="ejercicio-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
+                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
+                        <a href="pdfs/ejercicios/ejercicio2.pdf" class="view-btn" target="_blank">
+                            👁️ Ver Ejercicio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-header">
+                        <h3>✍️ Ejercicio 3</h3>
+                        <p>[Título o Tema]</p>
+                    </div>
+                    <div class="ejercicio-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
+                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
+                        <a href="pdfs/ejercicios/ejercicio3.pdf" class="view-btn" target="_blank">
+                            👁️ Ver Ejercicio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-header">
+                        <h3>✍️ Ejercicio 4</h3>
+                        <p>[Título o Tema]</p>
+                    </div>
+                    <div class="ejercicio-body">
+                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
+                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
+                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
+                        <a href="pdfs/ejercicios/ejercicio4.pdf" class="view-btn" target="_blank">
+                            👁️ Ver Ejercicio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Agrega más ejercicios según necesites -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MATERIA -->
+    <div id="materia" class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>📚 Materia</h2>
+                <p>Contenidos y recursos por unidad</p>
+            </div>
+
+            <div class="edit-note">
+                <strong>📝 Instrucciones:</strong>
+                Edita cada unidad con los contenidos que viste en clase y agrega los links de los videos
+            </div>
+
+            <div class="unidades-container">
+                <!-- UNIDAD 1 -->
+                <div class="unidad-card">
+                    <div class="unidad-header" onclick="toggleUnidad(1)">
+                        <h3>Unidad 1: [Nombre de la Unidad]</h3>
+                        <span class="toggle-icon" id="icon-1">▼</span>
+                    </div>
+                    <div class="unidad-content" id="unidad-1">
+                        <div class="unidad-inner">
+                            <div class="subseccion">
+                                <h4>📋 Contenidos Tratados</h4>
+                                <ul class="contenidos-lista">
+                                    <li>Tema 1.1: [Descripción del tema]</li>
+                                    <li>Tema 1.2: [Descripción del tema]</li>
+                                    <li>Tema 1.3: [Descripción del tema]</li>
+                                    <li>Tema 1.4: [Descripción del tema]</li>
+                                </ul>
+                            </div>
+
+                            <div class="subseccion">
+                                <h4>🎥 Videos de Apoyo</h4>
+                                <div class="videos-grid">
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 1: [Título]</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 2: [Título]</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UNIDAD 2 -->
+                <div class="unidad-card">
+                    <div class="unidad-header" onclick="toggleUnidad(2)">
+                        <h3>Unidad 2: [Nombre de la Unidad]</h3>
+                        <span class="toggle-icon" id="icon-2">▼</span>
+                    </div>
+                    <div class="unidad-content" id="unidad-2">
+                        <div class="unidad-inner">
+                            <div class="subseccion">
+                                <h4>📋 Contenidos Tratados</h4>
+                                <ul class="contenidos-lista">
+                                    <li>Tema 2.1: [Descripción del tema]</li>
+                                    <li>Tema 2.2: [Descripción del tema]</li>
+                                    <li>Tema 2.3: [Descripción del tema]</li>
+                                    <li>Tema 2.4: [Descripción del tema]</li>
+                                </ul>
+                            </div>
+
+                            <div class="subseccion">
+                                <h4>🎥 Videos de Apoyo</h4>
+                                <div class="videos-grid">
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 1: [Título]</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 2: [Título]</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UNIDAD 3 -->
+                <div class="unidad-card">
+                    <div class="unidad-header" onclick="toggleUnidad(3)">
+                        <h3>Unidad 3: [Nombre de la Unidad]</h3>
+                        <span class="toggle-icon" id="icon-3">▼</span>
+                    </div>
+                    <div class="unidad-content" id="unidad-3">
+                        <div class="unidad-inner">
+                            <div class="subseccion">
+                                <h4>📋 Contenidos Tratados</h4>
+                                <ul class="contenidos-lista">
+                                    <li>Tema 3.1: [Descripción del tema]</li>
+                                    <li>Tema 3.2: [Descripción del tema]</li>
+                                    <li>Tema 3.3: [Descripción del tema]</li>
+                                    <li>Tema 3.4: [Descripción del tema]</li>
+                                </ul>
+                            </div>
+
+                            <div class="subseccion">
+                                <h4>🎥 Videos de Apoyo</h4>
+                                <div class="videos-grid">
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 1: [Título]</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 2: [Título]</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UNIDAD 4 -->
+                <div class="unidad-card">
+                    <div class="unidad-header" onclick="toggleUnidad(4)">
+                        <h3>Unidad 4: [Nombre de la Unidad]</h3>
+                        <span class="toggle-icon" id="icon-4">▼</span>
+                    </div>
+                    <div class="unidad-content" id="unidad-4">
+                        <div class="unidad-inner">
+                            <div class="subseccion">
+                                <h4>📋 Contenidos Tratados</h4>
+                                <ul class="contenidos-lista">
+                                    <li>Tema 4.1: [Descripción del tema]</li>
+                                    <li>Tema 4.2: [Descripción del tema]</li>
+                                    <li>Tema 4.3: [Descripción del tema]</li>
+                                    <li>Tema 4.4: [Descripción del tema]</li>
+                                </ul>
+                            </div>
+
+                            <div class="subseccion">
+                                <h4>🎥 Videos de Apoyo</h4>
+                                <div class="videos-grid">
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 1: [Título]</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-card">
+                                        <a href="URL_VIDEO" target="_blank">
+                                            <span class="video-icon">▶️</span>
+                                            <span>Video 2: [Título]</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
