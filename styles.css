@@ -536,6 +536,52 @@ nav {
     margin-bottom: 5px;
 }
 
+/* ===== CELULARES VERTICAL (máx. 480px) ===== */
+@media (max-width: 480px) {
+  .portada-content {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .portada-content h1 {
+    font-size: 2em;
+    letter-spacing: 1px;
+  }
+
+  .info-estudiante {
+    padding: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .btn-ingresar {
+    padding: 14px 25px;
+    font-size: 1em;
+    width: 100%;          /* ocupa todo el ancho disponible */
+    margin-top: 25px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-btn {
+    width: 100%;
+    font-size: 1em;
+    padding: 12px;
+  }
+
+  /* evita que el botón quede tapado por la barra del navegador móvil */
+  .portada {
+    min-height: 100vh;
+    padding-top: 10vh;
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .portada-content {
@@ -565,3 +611,4 @@ nav {
         gap: 10px;
     }
 }
+
