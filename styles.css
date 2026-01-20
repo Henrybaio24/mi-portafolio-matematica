@@ -18,10 +18,7 @@ body {
     justify-content: center;
     background: linear-gradient(135deg, #0a1929 0%, #1a365d 50%, #2d5a7b 100%);
     position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 20px 0;
-    -webkit-overflow-scrolling: touch;
+    padding: 40px 0;
 }
 
 .portada::before {
@@ -613,5 +610,6 @@ nav {
         gap: 10px;
     }
 }
+
 
 
