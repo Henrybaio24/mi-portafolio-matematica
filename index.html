@@ -9,43 +9,70 @@
 <body>
     <!-- PORTADA -->
     <div id="portada" class="portada">
+        <div class="particles"></div>
         <div class="portada-content">
-            <h1>📐 MATEMÁTICA</h1>
-            <h2 style="color: #71B280; margin-bottom: 30px; font-size: 1.6em; font-weight: 400; letter-spacing: 3px;">PORTAFOLIO DIGITAL</h2>
+            <div class="logo-container">
+                <div class="math-symbols">∫ ∑ π ∞</div>
+            </div>
+            
+            <h1 class="main-title">
+                <span class="title-line">PORTAFOLIO</span>
+                <span class="title-line gradient-text">MATEMÁTICA</span>
+            </h1>
+            
+            <div class="subtitle">Cálculo Integral • 2025-2026</div>
             
             <div class="info-estudiante">
-                <h3 style="margin-bottom: 15px; font-size: 1.5em;">Información del Estudiante</h3>
+                <div class="info-header">
+                    <div class="icon-badge">👤</div>
+                    <h3>Henry Jesús Montenegro Alvarez</h3>
+                </div>
+                
                 <div class="info-grid">
                     <div class="info-item">
-                        <strong>Institución:</strong>
-                        <span>Universidad Central del Ecuador</span>
+                        <div class="info-icon">🎓</div>
+                        <div class="info-text">
+                            <strong>Institución</strong>
+                            <span>Universidad Central del Ecuador</span>
+                        </div>
                     </div>
+                    
                     <div class="info-item">
-                        <strong>Facultad::</strong>
-                        <span>Filosofia Letras y Ciencias de la Educación</span>
+                        <div class="info-icon">📚</div>
+                        <div class="info-text">
+                            <strong>Facultad</strong>
+                            <span>Filosofía, Letras y Ciencias de la Educación</span>
+                        </div>
                     </div>
+                    
                     <div class="info-item">
-                        <strong>Nombre:</strong>
-                        <span>Henry Jesús Montenegro Alvarez</span>
+                        <div class="info-icon">📊</div>
+                        <div class="info-text">
+                            <strong>Semestre</strong>
+                            <span>Tercero "A"</span>
+                        </div>
                     </div>
+                    
                     <div class="info-item">
-                        <strong>Semestre:</strong>
-                        <span>Tercero "A"</span>
-                    </div>
-                    <div class="info-item">
-                        <strong>Docente:</strong>
-                        <span>Msc. Diego Tipan</span>
-                    </div>
-                    <div class="info-item">
-                        <strong>Período:</strong>
-                        <span>2025-2026</span>
+                        <div class="info-icon">👨‍🏫</div>
+                        <div class="info-text">
+                            <strong>Docente</strong>
+                            <span>Msc. Diego Tipan</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <button class="btn-ingresar" onclick="ingresarPortafolio()">
-                Ingresar al Portafolio →
+                <span>Explorar Portafolio</span>
+                <div class="btn-arrow">→</div>
             </button>
+            
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -55,11 +82,11 @@
             <button class="nav-btn active" onclick="mostrarSeccion('portafolio')">
                 📁 Portafolio Virtual
             </button>
-            <button class="nav-btn" onclick="mostrarSeccion('ejercicios')">
-                ✏️ Ejercicios de Clase
-            </button>
             <button class="nav-btn" onclick="mostrarSeccion('materia')">
                 📚 Materia
+            </button>
+            <button class="nav-btn" onclick="mostrarSeccion('ejercicios')">
+                ✏️ Ejercicios de Clase
             </button>
             <button class="nav-btn" onclick="volverPortada()">
                 🏠 Portada
@@ -72,89 +99,125 @@
         <div class="container">
             <div class="section-title">
                 <h2>📁 Portafolio Virtual</h2>
-                <p>Todos los trabajos del portafolio físico digitalizados</p>
+                <p>Visualiza y descarga todos los trabajos</p>
             </div>
 
-            <!-- BOTÓN DESCARGAR TODO -->
             <div class="download-all-container">
-                <h3 style="color: #134E5E; margin-bottom: 15px;">💾 Descarga Completa</h3>
+                <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.8em;">💾 Descarga Completa</h3>
                 <p style="color: #666; margin-bottom: 20px;">Descarga todos los trabajos en un solo archivo ZIP</p>
                 <a href="pdfs/portafolio_completo.zip" class="download-all-btn">
                     📦 Descargar Todos los Trabajos
                 </a>
-                <div class="edit-note" style="margin-top: 20px;">
-                    <strong>📝 Instrucciones:</strong>
-                    Crea un archivo ZIP con todos tus PDFs y nómbralo "portafolio_completo.zip" en la carpeta "pdfs/"
-                </div>
-            </div>
-
-            <div class="edit-note">
-                <strong>📝 Instrucciones:</strong>
-                Agrega o elimina tarjetas según la cantidad de trabajos que tengas. Cada PDF escaneado debe estar en la carpeta "pdfs/"
             </div>
 
             <div class="portafolio-grid">
-                <div class="portafolio-card">
-                    <div class="card-header">
-                        <div class="pdf-icon-large">📄</div>
+                <!-- TRABAJO 1 -->
+                <div class="portafolio-card-new">
+                    <div class="card-header-new">
+                        <div class="card-icon">📄</div>
                         <h3>Trabajo 1</h3>
-                        <p>[Título del Trabajo]</p>
+                        <p class="card-subtitle">[Título del Trabajo]</p>
                     </div>
-                    <div class="card-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Tema:</strong> [Descripción breve]</p>
-                        <a href="pdfs/trabajo1.pdf" class="download-btn" target="_blank">
-                            📥 Descargar PDF
+                    <div class="card-info">
+                        <div class="info-row">
+                            <span class="info-label">📅 Fecha:</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">📌 Tema:</span>
+                            <span>[Descripción breve]</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="verPDF('pdfs/trabajo1.pdf', 'Trabajo 1')">
+                            👁️ Ver Documento
+                        </button>
+                        <a href="pdfs/trabajo1.pdf" class="btn-download" download>
+                            📥 Descargar
                         </a>
                     </div>
                 </div>
 
-                <div class="portafolio-card">
-                    <div class="card-header">
-                        <div class="pdf-icon-large">📄</div>
+                <!-- TRABAJO 2 -->
+                <div class="portafolio-card-new">
+                    <div class="card-header-new">
+                        <div class="card-icon">📄</div>
                         <h3>Trabajo 2</h3>
-                        <p>[Título del Trabajo]</p>
+                        <p class="card-subtitle">[Título del Trabajo]</p>
                     </div>
-                    <div class="card-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Tema:</strong> [Descripción breve]</p>
-                        <a href="pdfs/trabajo2.pdf" class="download-btn" target="_blank">
-                            📥 Descargar PDF
+                    <div class="card-info">
+                        <div class="info-row">
+                            <span class="info-label">📅 Fecha:</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">📌 Tema:</span>
+                            <span>[Descripción breve]</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="verPDF('pdfs/trabajo2.pdf', 'Trabajo 2')">
+                            👁️ Ver Documento
+                        </button>
+                        <a href="pdfs/trabajo2.pdf" class="btn-download" download>
+                            📥 Descargar
                         </a>
                     </div>
                 </div>
 
-                <div class="portafolio-card">
-                    <div class="card-header">
-                        <div class="pdf-icon-large">📄</div>
+                <!-- TRABAJO 3 -->
+                <div class="portafolio-card-new">
+                    <div class="card-header-new">
+                        <div class="card-icon">📄</div>
                         <h3>Trabajo 3</h3>
-                        <p>[Título del Trabajo]</p>
+                        <p class="card-subtitle">[Título del Trabajo]</p>
                     </div>
-                    <div class="card-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Tema:</strong> [Descripción breve]</p>
-                        <a href="pdfs/trabajo3.pdf" class="download-btn" target="_blank">
-                            📥 Descargar PDF
+                    <div class="card-info">
+                        <div class="info-row">
+                            <span class="info-label">📅 Fecha:</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">📌 Tema:</span>
+                            <span>[Descripción breve]</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="verPDF('pdfs/trabajo3.pdf', 'Trabajo 3')">
+                            👁️ Ver Documento
+                        </button>
+                        <a href="pdfs/trabajo3.pdf" class="btn-download" download>
+                            📥 Descargar
                         </a>
                     </div>
                 </div>
 
-                <div class="portafolio-card">
-                    <div class="card-header">
-                        <div class="pdf-icon-large">📄</div>
+                <!-- TRABAJO 4 -->
+                <div class="portafolio-card-new">
+                    <div class="card-header-new">
+                        <div class="card-icon">📄</div>
                         <h3>Trabajo 4</h3>
-                        <p>[Título del Trabajo]</p>
+                        <p class="card-subtitle">[Título del Trabajo]</p>
                     </div>
-                    <div class="card-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Tema:</strong> [Descripción breve]</p>
-                        <a href="pdfs/trabajo4.pdf" class="download-btn" target="_blank">
-                            📥 Descargar PDF
+                    <div class="card-info">
+                        <div class="info-row">
+                            <span class="info-label">📅 Fecha:</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">📌 Tema:</span>
+                            <span>[Descripción breve]</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="verPDF('pdfs/trabajo4.pdf', 'Trabajo 4')">
+                            👁️ Ver Documento
+                        </button>
+                        <a href="pdfs/trabajo4.pdf" class="btn-download" download>
+                            📥 Descargar
                         </a>
                     </div>
                 </div>
-
-                <!-- Agrega más tarjetas según necesites -->
             </div>
         </div>
     </div>
@@ -164,280 +227,451 @@
         <div class="container">
             <div class="section-title">
                 <h2>✏️ Ejercicios Hechos en Clase</h2>
-                <p>Ejercicios resueltos durante las clases</p>
+                <p>Visualiza los ejercicios resueltos</p>
             </div>
 
-            <div class="edit-note">
-                <strong>📝 Instrucciones:</strong>
-                Agrega tus ejercicios escaneados o fotografiados. Puedes organizarlos por unidad o por fecha.
-            </div>
-
-            <div class="ejercicios-grid">
-                <div class="ejercicio-card">
-                    <div class="ejercicio-header">
-                        <h3>✍️ Ejercicio 1</h3>
-                        <p>[Título o Tema]</p>
+            <div class="ejercicios-grid-new">
+                <!-- EJERCICIO 1 -->
+                <div class="ejercicio-card-new">
+                    <div class="ejercicio-header-new">
+                        <div class="ejercicio-number">01</div>
+                        <div class="ejercicio-info">
+                            <h3>Ejercicio 1</h3>
+                            <p>[Título o Tema]</p>
+                        </div>
                     </div>
-                    <div class="ejercicio-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
-                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
-                        <a href="pdfs/ejercicios/ejercicio1.pdf" class="view-btn" target="_blank">
-                            👁️ Ver Ejercicio
-                        </a>
+                    <div class="ejercicio-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📚</span>
+                            <span>[Unidad correspondiente]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📝</span>
+                            <span>[Descripción breve]</span>
+                        </div>
                     </div>
+                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio1.pdf', 'Ejercicio 1')">
+                        👁️ Ver Ejercicio Completo
+                    </button>
                 </div>
 
-                <div class="ejercicio-card">
-                    <div class="ejercicio-header">
-                        <h3>✍️ Ejercicio 2</h3>
-                        <p>[Título o Tema]</p>
+                <!-- EJERCICIO 2 -->
+                <div class="ejercicio-card-new">
+                    <div class="ejercicio-header-new">
+                        <div class="ejercicio-number">02</div>
+                        <div class="ejercicio-info">
+                            <h3>Ejercicio 2</h3>
+                            <p>[Título o Tema]</p>
+                        </div>
                     </div>
-                    <div class="ejercicio-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
-                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
-                        <a href="pdfs/ejercicios/ejercicio2.pdf" class="view-btn" target="_blank">
-                            👁️ Ver Ejercicio
-                        </a>
+                    <div class="ejercicio-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📚</span>
+                            <span>[Unidad correspondiente]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📝</span>
+                            <span>[Descripción breve]</span>
+                        </div>
                     </div>
+                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio2.pdf', 'Ejercicio 2')">
+                        👁️ Ver Ejercicio Completo
+                    </button>
                 </div>
 
-                <div class="ejercicio-card">
-                    <div class="ejercicio-header">
-                        <h3>✍️ Ejercicio 3</h3>
-                        <p>[Título o Tema]</p>
+                <!-- EJERCICIO 3 -->
+                <div class="ejercicio-card-new">
+                    <div class="ejercicio-header-new">
+                        <div class="ejercicio-number">03</div>
+                        <div class="ejercicio-info">
+                            <h3>Ejercicio 3</h3>
+                            <p>[Título o Tema]</p>
+                        </div>
                     </div>
-                    <div class="ejercicio-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
-                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
-                        <a href="pdfs/ejercicios/ejercicio3.pdf" class="view-btn" target="_blank">
-                            👁️ Ver Ejercicio
-                        </a>
+                    <div class="ejercicio-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📚</span>
+                            <span>[Unidad correspondiente]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📝</span>
+                            <span>[Descripción breve]</span>
+                        </div>
                     </div>
+                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio3.pdf', 'Ejercicio 3')">
+                        👁️ Ver Ejercicio Completo
+                    </button>
                 </div>
 
-                <div class="ejercicio-card">
-                    <div class="ejercicio-header">
-                        <h3>✍️ Ejercicio 4</h3>
-                        <p>[Título o Tema]</p>
+                <!-- EJERCICIO 4 -->
+                <div class="ejercicio-card-new">
+                    <div class="ejercicio-header-new">
+                        <div class="ejercicio-number">04</div>
+                        <div class="ejercicio-info">
+                            <h3>Ejercicio 4</h3>
+                            <p>[Título o Tema]</p>
+                        </div>
                     </div>
-                    <div class="ejercicio-body">
-                        <p><strong>Fecha:</strong> [DD/MM/AAAA]</p>
-                        <p><strong>Unidad:</strong> [Unidad correspondiente]</p>
-                        <p><strong>Descripción:</strong> [Breve descripción del ejercicio]</p>
-                        <a href="pdfs/ejercicios/ejercicio4.pdf" class="view-btn" target="_blank">
-                            👁️ Ver Ejercicio
-                        </a>
+                    <div class="ejercicio-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span>[DD/MM/AAAA]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📚</span>
+                            <span>[Unidad correspondiente]</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📝</span>
+                            <span>[Descripción breve]</span>
+                        </div>
                     </div>
+                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio4.pdf', 'Ejercicio 4')">
+                        👁️ Ver Ejercicio Completo
+                    </button>
                 </div>
-
-                <!-- Agrega más ejercicios según necesites -->
             </div>
         </div>
     </div>
 
-    <!-- MATERIA -->
+    <!-- MATERIA - NUEVO DISEÑO SIN ACORDEÓN -->
     <div id="materia" class="main-content">
         <div class="container">
             <div class="section-title">
-                <h2>📚 Materia</h2>
-                <p>Contenidos y recursos por unidad</p>
+                <h2>📚 Contenido de la Materia</h2>
+                <p>Unidades, temas y videos de apoyo</p>
             </div>
 
-            <div class="edit-note">
-                <strong>📝 Instrucciones:</strong>
-                Edita cada unidad con los contenidos que viste en clase y agrega los links de los videos
+            <!-- UNIDAD 1 -->
+            <div class="unidad-moderna">
+                <div class="unidad-header-moderna">
+                    <div class="unidad-numero">01</div>
+                    <div class="unidad-titulo">
+                        <h2>Integral Indefinida</h2>
+                        <p>Fundamentos y propiedades básicas</p>
+                    </div>
+                </div>
+
+                <div class="unidad-contenido-moderna">
+                    <div class="temas-section">
+                        <h3>📋 Contenidos Tratados</h3>
+                        <div class="temas-grid">
+                            <div class="tema-card">
+                                <span class="tema-number">1.1</span>
+                                <p>Antiderivada o primitiva de una función, propiedades</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">1.2</span>
+                                <p>Integrales indefinidas de funciones polinómicas, teoremas</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">1.3</span>
+                                <p>Integrales indefinidas trascendentales, teoremas</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">1.4</span>
+                                <p>Integrales indefinidas inversas e hiperbólicas, teoremas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="videos-section">
+                        <h3>🎥 Videos de Apoyo</h3>
+                        <div class="videos-grid-moderna">
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('b_ve-mmsAbQ', 'La antiderivada o integral de una función')">
+                                    <img src="https://img.youtube.com/vi/b_ve-mmsAbQ/maxresdefault.jpg" alt="Video 1">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>La antiderivada o integral de una función</h4>
+                                    <button onclick="verVideo('b_ve-mmsAbQ', 'La antiderivada o integral de una función')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('YH15lQvcEJw', 'Introducción - Indefinidas - Cálculo Integral')">
+                                    <img src="https://img.youtube.com/vi/YH15lQvcEJw/maxresdefault.jpg" alt="Video 2">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Introducción - Indefinidas - Cálculo Integral</h4>
+                                    <button onclick="verVideo('YH15lQvcEJw', 'Introducción - Indefinidas - Cálculo Integral')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('FaYJ9gZ-sD0', 'Introducción a las integrales de Funciones Trascendentales')">
+                                    <img src="https://img.youtube.com/vi/FaYJ9gZ-sD0/maxresdefault.jpg" alt="Video 3">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integrales de Funciones Trascendentales</h4>
+                                    <button onclick="verVideo('FaYJ9gZ-sD0', 'Introducción a las integrales de Funciones Trascendentales')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('ID7Thyr9lEc', 'Derivadas e integrales trigonométricas hiperbólicas')">
+                                    <img src="https://img.youtube.com/vi/ID7Thyr9lEc/maxresdefault.jpg" alt="Video 4">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Derivadas e integrales trigonométricas hiperbólicas</h4>
+                                    <button onclick="verVideo('ID7Thyr9lEc', 'Derivadas e integrales trigonométricas hiperbólicas')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="unidades-container">
-                <!-- UNIDAD 1 -->
-                <div class="unidad-card">
-                    <div class="unidad-header" onclick="toggleUnidad(1)">
-                        <h3>Unidad 1: Integral indefinida</h3>
-                        <span class="toggle-icon" id="icon-1">▼</span>
+            <!-- UNIDAD 2 -->
+            <div class="unidad-moderna">
+                <div class="unidad-header-moderna">
+                    <div class="unidad-numero">02</div>
+                    <div class="unidad-titulo">
+                        <h2>Métodos de Integración</h2>
+                        <p>Técnicas avanzadas de integración</p>
                     </div>
-                    <div class="unidad-content" id="unidad-1">
-                        <div class="unidad-inner">
-                            <div class="subseccion">
-                                <h4>📋 Contenidos Tratados</h4>
-                                <ul class="contenidos-lista">
-                                    <li>Tema 1.1: Antiderivada o primitiva de una función, propiedades</li>
-                                    <li>Tema 1.2: Integrales indefinidas de funciones polinomicas, teoremas</li>
-                                    <li>Tema 1.3: Integrales indefinidas trascendentales, teoremas</li>
-                                    <li>Tema 1.4: Integrales indefinidas inversas e hiperbolicas, teoremas</li>
-                                </ul>
+                </div>
+
+                <div class="unidad-contenido-moderna">
+                    <div class="temas-section">
+                        <h3>📋 Contenidos Tratados</h3>
+                        <div class="temas-grid">
+                            <div class="tema-card">
+                                <span class="tema-number">2.1</span>
+                                <p>Integración por el método de la sustitución</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">2.2</span>
+                                <p>Integración por sustituciones trigonométricas</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">2.3</span>
+                                <p>Integración por partes</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">2.4</span>
+                                <p>Integración de funciones racionales</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="videos-section">
+                        <h3>🎥 Videos de Apoyo</h3>
+                        <div class="videos-grid-moderna">
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('UZyG4jCBMgU', 'Integración por sustitución - Introducción')">
+                                    <img src="https://img.youtube.com/vi/UZyG4jCBMgU/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integración por sustitución - Introducción</h4>
+                                    <button onclick="verVideo('UZyG4jCBMgU', 'Integración por sustitución - Introducción')" class="btn-watch">Ver Video</button>
+                                </div>
                             </div>
 
-                            <div class="subseccion">
-                                <h4>🎥 Videos de Apoyo</h4>
-                                <div class="videos-grid">
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=b_ve-mmsAbQ" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 1: La antiderivada o integral de una función.</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=YH15lQvcEJw" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 2: Introducción | Indefinidas | Cálculo Integral</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=FaYJ9gZ-sD0" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 3: Introducción a las integrales de Funciones Trascendentales</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=ID7Thyr9lEc" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 4: Derivadas e integrales trigonométricas hiperbólicas</span>
-                                        </a>
-                                    </div>
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('RM6_xi9AKV8', 'Integrales por sustitución trigonométrica')">
+                                    <img src="https://img.youtube.com/vi/RM6_xi9AKV8/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integrales por sustitución trigonométrica</h4>
+                                    <button onclick="verVideo('RM6_xi9AKV8', 'Integrales por sustitución trigonométrica')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('93kW5colCAU', 'Integración por partes - Introducción')">
+                                    <img src="https://img.youtube.com/vi/93kW5colCAU/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integración por partes - Introducción</h4>
+                                    <button onclick="verVideo('93kW5colCAU', 'Integración por partes - Introducción')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('zStvluWWejc', 'Método de Integración de Funciones Racionales')">
+                                    <img src="https://img.youtube.com/vi/zStvluWWejc/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integración de Funciones Racionales</h4>
+                                    <button onclick="verVideo('zStvluWWejc', 'Método de Integración de Funciones Racionales')" class="btn-watch">Ver Video</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- UNIDAD 2 -->
-                <div class="unidad-card">
-                    <div class="unidad-header" onclick="toggleUnidad(2)">
-                        <h3>Unidad 2: Métodos de integración</h3>
-                        <span class="toggle-icon" id="icon-2">▼</span>
+            <!-- UNIDAD 3 -->
+            <div class="unidad-moderna">
+                <div class="unidad-header-moderna">
+                    <div class="unidad-numero">03</div>
+                    <div class="unidad-titulo">
+                        <h2>Integrales Definidas</h2>
+                        <p>Aplicaciones y teoremas fundamentales</p>
                     </div>
-                    <div class="unidad-content" id="unidad-2">
-                        <div class="unidad-inner">
-                            <div class="subseccion">
-                                <h4>📋 Contenidos Tratados</h4>
-                                <ul class="contenidos-lista">
-                                    <li>Tema 2.1: Integración por el método de la sustitución</li>
-                                    <li>Tema 2.2: Integración por sustituciones trigonométricas</li>
-                                    <li>Tema 2.3: Integración por partes</li>
-                                    <li>Tema 2.4: Integración de funciones racionales</li>
-                                </ul>
+                </div>
+
+                <div class="unidad-contenido-moderna">
+                    <div class="temas-section">
+                        <h3>📋 Contenidos Tratados</h3>
+                        <div class="temas-grid">
+                            <div class="tema-card">
+                                <span class="tema-number">3.1</span>
+                                <p>Definición de integral definida, propiedades</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">3.2</span>
+                                <p>Teorema del valor medio y teorema fundamental del cálculo</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">3.3</span>
+                                <p>Área entre curvas</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">3.4</span>
+                                <p>Volúmenes de sólidos de revolución</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="videos-section">
+                        <h3>🎥 Videos de Apoyo</h3>
+                        <div class="videos-grid-moderna">
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('TocqVkBzDrA', 'Integrales definidas - Introducción')">
+                                    <img src="https://img.youtube.com/vi/TocqVkBzDrA/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Integrales definidas - Introducción</h4>
+                                    <button onclick="verVideo('TocqVkBzDrA', 'Integrales definidas - Introducción')" class="btn-watch">Ver Video</button>
+                                </div>
                             </div>
 
-                            <div class="subseccion">
-                                <h4>🎥 Videos de Apoyo</h4>
-                                <div class="videos-grid">
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=UZyG4jCBMgU" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 1: Integración por sustitución | Introducción</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=RM6_xi9AKV8&list=PLeySRPnY35dGH1jMJ5lkNfNSOr-AhxcEK" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 2: Integrales por sustitución trigonométrica Introducción</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=93kW5colCAU" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 3: Integración por partes | Introducción</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=zStvluWWejc" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 4: Método de Integración de Funciones Racionales</span>
-                                        </a>
-                                    </div>
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('3JnjuJhUxjQ', 'Teorema del valor medio para integrales')">
+                                    <img src="https://img.youtube.com/vi/3JnjuJhUxjQ/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Teorema del valor medio para integrales</h4>
+                                    <button onclick="verVideo('3JnjuJhUxjQ', 'Teorema del valor medio para integrales')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('hZ1n4-Cpn74', 'Área entre curvas')">
+                                    <img src="https://img.youtube.com/vi/hZ1n4-Cpn74/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Área entre curvas</h4>
+                                    <button onclick="verVideo('hZ1n4-Cpn74', 'Área entre curvas')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('QyIWrbnTVM4', 'Volumen de sólidos de revolución')">
+                                    <img src="https://img.youtube.com/vi/QyIWrbnTVM4/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Volumen de sólidos de revolución</h4>
+                                    <button onclick="verVideo('QyIWrbnTVM4', 'Volumen de sólidos de revolución')" class="btn-watch">Ver Video</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- UNIDAD 3 -->
-                <div class="unidad-card">
-                    <div class="unidad-header" onclick="toggleUnidad(3)">
-                        <h3>Unidad 3: Integrales definidas</h3>
-                        <span class="toggle-icon" id="icon-3">▼</span>
-                    </div>
-                    <div class="unidad-content" id="unidad-3">
-                        <div class="unidad-inner">
-                            <div class="subseccion">
-                                <h4>📋 Contenidos Tratados</h4>
-                                <ul class="contenidos-lista">
-                                    <li>Tema 3.1: Definición de integral definida, propiedades</li>
-                                    <li>Tema 3.2: Teorema del valor medio para integrales y teorema fundamental del cálculo</li>
-                                    <li>Tema 3.3: Área entre curvas</li>
-                                    <li>Tema 3.4: Volumenes de solidos de revolución</li>
-                                </ul>
-                            </div>
-
-                            <div class="subseccion">
-                                <h4>🎥 Videos de Apoyo</h4>
-                                <div class="videos-grid">
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=TocqVkBzDrA" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 1: Integrales definidas | Introducción</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=3JnjuJhUxjQ" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 2: Teorema del valor medio para integrales</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=hZ1n4-Cpn74" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 3: Área entre curvas</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="https://www.youtube.com/watch?v=QyIWrbnTVM4" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 4: Cálculo Integral - Volumen de sólidos de revolución #1</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- UNIDAD 4 -->
+            <div class="unidad-moderna">
+                <div class="unidad-header-moderna">
+                    <div class="unidad-numero">04</div>
+                    <div class="unidad-titulo">
+                        <h2>Aplicaciones de la Integral Definida</h2>
+                        <p>Aplicaciones prácticas y físicas</p>
                     </div>
                 </div>
 
-                <!-- UNIDAD 4 -->
-                <div class="unidad-card">
-                    <div class="unidad-header" onclick="toggleUnidad(4)">
-                        <h3>Unidad 4: [Nombre de la Unidad]</h3>
-                        <span class="toggle-icon" id="icon-4">▼</span>
+                <div class="unidad-contenido-moderna">
+                    <div class="temas-section">
+                        <h3>📋 Contenidos Tratados</h3>
+                        <div class="temas-grid">
+                            <div class="tema-card">
+                                <span class="tema-number">4.1</span>
+                                <p>Longitud de arco de una función</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">4.2</span>
+                                <p>Centro de masa de una barra</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">4.3</span>
+                                <p>Centro de masa de una lámina y centroide de una región plana</p>
+                            </div>
+                            <div class="tema-card">
+                                <span class="tema-number">4.4</span>
+                                <p>Trabajo</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="unidad-content" id="unidad-4">
-                        <div class="unidad-inner">
-                            <div class="subseccion">
-                                <h4>📋 Contenidos Tratados</h4>
-                                <ul class="contenidos-lista">
-                                    <li>Tema 4.1: [Descripción del tema]</li>
-                                    <li>Tema 4.2: [Descripción del tema]</li>
-                                    <li>Tema 4.3: [Descripción del tema]</li>
-                                    <li>Tema 4.4: [Descripción del tema]</li>
-                                </ul>
+
+                    <div class="videos-section">
+                        <h3>🎥 Videos de Apoyo</h3>
+                        <div class="videos-grid-moderna">
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('Fg9C0cckeek', 'Longitud de arco de una función')">
+                                    <img src="https://img.youtube.com/vi/Fg9C0cckeek/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Longitud de arco de una función</h4>
+                                    <button onclick="verVideo('Fg9C0cckeek', 'Longitud de arco de una función')" class="btn-watch">Ver Video</button>
+                                </div>
                             </div>
 
-                            <div class="subseccion">
-                                <h4>🎥 Videos de Apoyo</h4>
-                                <div class="videos-grid">
-                                    <div class="video-card">
-                                        <a href="URL_VIDEO" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 1: [Título]</span>
-                                        </a>
-                                    </div>
-                                    <div class="video-card">
-                                        <a href="URL_VIDEO" target="_blank">
-                                            <span class="video-icon">▶️</span>
-                                            <span>Video 2: [Título]</span>
-                                        </a>
-                                    </div>
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('mUyLFaODHkE', 'Centro de masas de una barra uniforme')">
+                                    <img src="https://img.youtube.com/vi/mUyLFaODHkE/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Centro de masas de una barra uniforme</h4>
+                                    <button onclick="verVideo('mUyLFaODHkE', 'Centro de masas de una barra uniforme')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
+
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('m25dbmu_Eiw', 'Centro de Masa usando integrales')">
+                                    <img src="https://img.youtube.com/vi/m25dbmu_Eiw/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>Centro de Masa (Centroide) usando integrales</h4>
+                                    <button onclick="verVideo('m25dbmu_Eiw', 'Centro de Masa usando integrales')" class="btn-watch">Ver Video</button>
                                 </div>
                             </div>
                         </div>
@@ -447,6 +681,33 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- MODAL PARA VER PDFs -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content-pdf">
+            <div class="modal-header">
+                <h3 id="pdfTitle"></h3>
+                <button class="modal-close" onclick="cerrarModal()">&times;</button>
+            </div>
+            <div class="modal-body-pdf">
+                <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VER VIDEOS -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content-video">
+            <div class="modal-header">
+                <h3 id="videoTitle"></h3>
+                <button class="modal-close" onclick="cerrarModalVideo()">&times;</button>
+            </div>
+            <div class="modal-body-video">
+                <iframe id="videoPlayer" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
