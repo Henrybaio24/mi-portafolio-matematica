@@ -63,9 +63,13 @@
                 </div>
             </div>
 
-            <button class="btn-ingresar" onclick="ingresarPortafolio()">
+            <button class="btn-ingresar" onclick="scrollToContent()">
                 <span>Explorar Portafolio</span>
-                <div class="btn-arrow">→</div>
+                <div class="btn-icon-scroll">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </button>
             
             <div class="scroll-indicator">
@@ -76,32 +80,15 @@
         </div>
     </div>
 
-    <!-- NAVEGACIÓN -->
-    <nav id="navbar" style="display: none;">
-        <div class="nav-container">
-            <button class="nav-btn active" onclick="mostrarSeccion('portafolio')">
-                📁 Portafolio Virtual
-            </button>
-            <button class="nav-btn" onclick="mostrarSeccion('materia')">
-                📚 Materia
-            </button>
-            <button class="nav-btn" onclick="mostrarSeccion('ejercicios')">
-                ✏️ Ejercicios de Clase
-            </button>
-            <button class="nav-btn" onclick="volverPortada()">
-                🏠 Portada
-            </button>
-        </div>
-    </nav>
-
-    <!-- PORTAFOLIO VIRTUAL -->
-    <div id="portafolio" class="main-content">
+    <!-- SECCIÓN DE TRABAJOS Y EJERCICIOS -->
+    <div id="portafolio" class="content-section">
         <div class="container">
             <div class="section-title">
-                <h2>📁 Portafolio Virtual</h2>
-                <p>Visualiza y descarga todos los trabajos</p>
+                <h2>📁 Mi Trabajo Académico</h2>
+                <p>Trabajos y ejercicios de Cálculo Integral</p>
             </div>
 
+            <!-- Botón de descarga completa -->
             <div class="download-all-container">
                 <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.8em;">💾 Descarga Completa</h3>
                 <p style="color: #666; margin-bottom: 20px;">Descarga todos los trabajos en un solo archivo ZIP</p>
@@ -110,244 +97,53 @@
                 </a>
             </div>
 
-            <div class="portafolio-grid">
-                <!-- TRABAJO 1 -->
-                <div class="portafolio-card-new">
-                    <div class="card-header-new">
-                        <div class="card-icon">📄</div>
-                        <h3>Trabajo 1</h3>
-                        <p class="card-subtitle">[Título del Trabajo]</p>
+            <!-- CARDS PRINCIPALES -->
+            <div class="main-cards-grid">
+                <!-- CARD PORTAFOLIO -->
+                <div class="main-card portafolio-card-main">
+                    <div class="main-card-header">
+                        <div class="main-card-icon">📄</div>
+                        <h3>Portafolio de Trabajos</h3>
+                        <p class="main-card-subtitle">4 trabajos realizados</p>
                     </div>
-                    <div class="card-info">
-                        <div class="info-row">
-                            <span class="info-label">📅 Fecha:</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">📌 Tema:</span>
-                            <span>[Descripción breve]</span>
-                        </div>
+                    <div class="main-card-body">
+                        <p class="main-card-description">Visualiza todos los trabajos entregados durante el semestre de Cálculo Integral.</p>
+                        <ul class="main-card-features">
+                            <li>✓ Trabajos individuales y grupales</li>
+                            <li>✓ Formato PDF descargable</li>
+                            <li>✓ Organizados cronológicamente</li>
+                        </ul>
                     </div>
-                    <div class="card-actions">
-                        <button class="btn-view" onclick="verPDF('pdfs/trabajo1.pdf', 'Trabajo 1')">
-                            👁️ Ver Documento
-                        </button>
-                        <a href="pdfs/trabajo1.pdf" class="btn-download" download>
-                            📥 Descargar
-                        </a>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 2 -->
-                <div class="portafolio-card-new">
-                    <div class="card-header-new">
-                        <div class="card-icon">📄</div>
-                        <h3>Trabajo 2</h3>
-                        <p class="card-subtitle">[Título del Trabajo]</p>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-row">
-                            <span class="info-label">📅 Fecha:</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">📌 Tema:</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-view" onclick="verPDF('pdfs/trabajo2.pdf', 'Trabajo 2')">
-                            👁️ Ver Documento
-                        </button>
-                        <a href="pdfs/trabajo2.pdf" class="btn-download" download>
-                            📥 Descargar
-                        </a>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 3 -->
-                <div class="portafolio-card-new">
-                    <div class="card-header-new">
-                        <div class="card-icon">📄</div>
-                        <h3>Trabajo 3</h3>
-                        <p class="card-subtitle">[Título del Trabajo]</p>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-row">
-                            <span class="info-label">📅 Fecha:</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">📌 Tema:</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-view" onclick="verPDF('pdfs/trabajo3.pdf', 'Trabajo 3')">
-                            👁️ Ver Documento
-                        </button>
-                        <a href="pdfs/trabajo3.pdf" class="btn-download" download>
-                            📥 Descargar
-                        </a>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 4 -->
-                <div class="portafolio-card-new">
-                    <div class="card-header-new">
-                        <div class="card-icon">📄</div>
-                        <h3>Trabajo 4</h3>
-                        <p class="card-subtitle">[Título del Trabajo]</p>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-row">
-                            <span class="info-label">📅 Fecha:</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">📌 Tema:</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-view" onclick="verPDF('pdfs/trabajo4.pdf', 'Trabajo 4')">
-                            👁️ Ver Documento
-                        </button>
-                        <a href="pdfs/trabajo4.pdf" class="btn-download" download>
-                            📥 Descargar
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EJERCICIOS DE CLASE -->
-    <div id="ejercicios" class="main-content">
-        <div class="container">
-            <div class="section-title">
-                <h2>✏️ Ejercicios Hechos en Clase</h2>
-                <p>Visualiza los ejercicios resueltos</p>
-            </div>
-
-            <div class="ejercicios-grid-new">
-                <!-- EJERCICIO 1 -->
-                <div class="ejercicio-card-new">
-                    <div class="ejercicio-header-new">
-                        <div class="ejercicio-number">01</div>
-                        <div class="ejercicio-info">
-                            <h3>Ejercicio 1</h3>
-                            <p>[Título o Tema]</p>
-                        </div>
-                    </div>
-                    <div class="ejercicio-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📚</span>
-                            <span>[Unidad correspondiente]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio1.pdf', 'Ejercicio 1')">
-                        👁️ Ver Ejercicio Completo
+                    <button class="main-card-btn" onclick="abrirCarrusel('portfolio')">
+                        👁️ Ver Todos los Trabajos
                     </button>
                 </div>
 
-                <!-- EJERCICIO 2 -->
-                <div class="ejercicio-card-new">
-                    <div class="ejercicio-header-new">
-                        <div class="ejercicio-number">02</div>
-                        <div class="ejercicio-info">
-                            <h3>Ejercicio 2</h3>
-                            <p>[Título o Tema]</p>
-                        </div>
+                <!-- CARD EJERCICIOS -->
+                <div class="main-card ejercicios-card-main">
+                    <div class="main-card-header ejercicios-header">
+                        <div class="main-card-icon">✏️</div>
+                        <h3>Ejercicios de Clase</h3>
+                        <p class="main-card-subtitle">4 ejercicios resueltos</p>
                     </div>
-                    <div class="ejercicio-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📚</span>
-                            <span>[Unidad correspondiente]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <span>[Descripción breve]</span>
-                        </div>
+                    <div class="main-card-body">
+                        <p class="main-card-description">Explora los ejercicios realizados durante las clases presenciales.</p>
+                        <ul class="main-card-features">
+                            <li>✓ Ejercicios paso a paso</li>
+                            <li>✓ Diferentes niveles de dificultad</li>
+                            <li>✓ Aplicaciones prácticas</li>
+                        </ul>
                     </div>
-                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio2.pdf', 'Ejercicio 2')">
-                        👁️ Ver Ejercicio Completo
-                    </button>
-                </div>
-
-                <!-- EJERCICIO 3 -->
-                <div class="ejercicio-card-new">
-                    <div class="ejercicio-header-new">
-                        <div class="ejercicio-number">03</div>
-                        <div class="ejercicio-info">
-                            <h3>Ejercicio 3</h3>
-                            <p>[Título o Tema]</p>
-                        </div>
-                    </div>
-                    <div class="ejercicio-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📚</span>
-                            <span>[Unidad correspondiente]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio3.pdf', 'Ejercicio 3')">
-                        👁️ Ver Ejercicio Completo
-                    </button>
-                </div>
-
-                <!-- EJERCICIO 4 -->
-                <div class="ejercicio-card-new">
-                    <div class="ejercicio-header-new">
-                        <div class="ejercicio-number">04</div>
-                        <div class="ejercicio-info">
-                            <h3>Ejercicio 4</h3>
-                            <p>[Título o Tema]</p>
-                        </div>
-                    </div>
-                    <div class="ejercicio-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <span>[DD/MM/AAAA]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📚</span>
-                            <span>[Unidad correspondiente]</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <span>[Descripción breve]</span>
-                        </div>
-                    </div>
-                    <button class="btn-view-ejercicio" onclick="verPDF('pdfs/ejercicios/ejercicio4.pdf', 'Ejercicio 4')">
-                        👁️ Ver Ejercicio Completo
+                    <button class="main-card-btn ejercicios-btn" onclick="abrirCarrusel('exercises')">
+                        👁️ Ver Todos los Ejercicios
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MATERIA - NUEVO DISEÑO SIN ACORDEÓN -->
-    <div id="materia" class="main-content">
+    <!-- MATERIA - DISEÑO MODERNO SIN ACORDEÓN -->
+    <div id="materia" class="content-section">
         <div class="container">
             <div class="section-title">
                 <h2>📚 Contenido de la Materia</h2>
@@ -680,6 +476,43 @@
             </div>
         </div>
     </div>
+
+    <!-- MODAL CARRUSEL -->
+    <!-- MODAL CARRUSEL FULLSCREEN -->
+    <div id="carouselModal">
+
+        <div class="carousel-modal-content">
+
+            <!-- HEADER -->
+            <div class="carousel-modal-header">
+
+                <div class="carousel-left">
+                    <span class="carousel-title" id="carouselTitle">📁 Portafolio</span>
+                </div>
+
+                <div class="carousel-close" onclick="cerrarCarruselModal()">✕</div>
+
+                <button class="carousel-btn prev" onclick="moveCarouselModal(-1)">❮</button>
+
+                <div class="carousel-indicator">
+                    <span id="carousel-current">1</span> / <span id="carousel-total">4</span>
+                </div>
+
+                <button class="carousel-btn next" onclick="moveCarouselModal(1)">❯</button>
+
+            </div>
+
+
+            <!-- BODY FULLSCREEN -->
+            <div class="carousel-modal-body">
+                <div id="carousel-modal-track"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
 
     <!-- MODAL PARA VER PDFs -->
     <div id="pdfModal" class="modal">
