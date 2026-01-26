@@ -1,104 +1,207 @@
-// Función para ingresar al portafolio desde la portada
-function ingresarPortafolio() {
-    document.getElementById('portada').style.display = 'none';
-    document.getElementById('navbar').style.display = 'block';
-    document.getElementById('portafolio').classList.add('active');
+// =========================
+// SCROLL
+// =========================
+function scrollToContent() {
+    const el = document.getElementById('portafolio');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Función para volver a la portada
-function volverPortada() {
-    document.getElementById('portada').style.display = 'flex';
-    document.getElementById('navbar').style.display = 'none';
-    document.getElementById('portafolio').classList.remove('active');
-    document.getElementById('ejercicios').classList.remove('active');
-    document.getElementById('materia').classList.remove('active');
-    
-    // Reset nav buttons
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.querySelectorAll('.nav-btn')[0].classList.add('active');
-}
-
-// Función para mostrar secciones del menú
-function mostrarSeccion(seccion) {
-    // Ocultar todas las secciones
-    document.querySelectorAll('.main-content').forEach(content => {
-        content.classList.remove('active');
-    });
-    
-    // Mostrar la sección seleccionada
-    document.getElementById(seccion).classList.add('active');
-    
-    // Actualizar botones activos
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
-}
-
-// Función para ver PDFs en modal
-function verPDF(url, titulo) {
-    const modal = document.getElementById('pdfModal');
-    const pdfViewer = document.getElementById('pdfViewer');
-    const pdfTitle = document.getElementById('pdfTitle');
-    
-    pdfTitle.textContent = titulo;
-    pdfViewer.src = url;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-// Función para cerrar modal de PDF
-function cerrarModal() {
-    const modal = document.getElementById('pdfModal');
-    const pdfViewer = document.getElementById('pdfViewer');
-    
-    modal.style.display = 'none';
-    pdfViewer.src = '';
-    document.body.style.overflow = 'auto';
-}
-
-// Función para ver videos de YouTube en modal
+// =========================
+// MODAL VIDEOS
+// =========================
 function verVideo(videoId, titulo) {
     const modal = document.getElementById('videoModal');
     const videoPlayer = document.getElementById('videoPlayer');
     const videoTitle = document.getElementById('videoTitle');
-    
+
+    if (!modal || !videoPlayer || !videoTitle) return;
+
     videoTitle.textContent = titulo;
     videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
-// Función para cerrar modal de video
 function cerrarModalVideo() {
     const modal = document.getElementById('videoModal');
     const videoPlayer = document.getElementById('videoPlayer');
-    
+
+    if (!modal || !videoPlayer) return;
+
     modal.style.display = 'none';
     videoPlayer.src = '';
     document.body.style.overflow = 'auto';
 }
 
-// Cerrar modales al hacer clic fuera de ellos
-window.onclick = function(event) {
-    const pdfModal = document.getElementById('pdfModal');
+// =========================
+// CERRAR VIDEO CLICK AFUERA
+// =========================
+window.addEventListener('click', function (event) {
     const videoModal = document.getElementById('videoModal');
-    
-    if (event.target === pdfModal) {
-        cerrarModal();
+    if (event.target === videoModal) cerrarModalVideo();
+});
+
+// =========================
+// CARRUSEL PDF
+// =========================
+let carruselModalActual = {
+    tipo: '',
+    indice: 0,
+    total: 0
+};
+
+const datosPortfolio = [
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-1.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-2.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-3.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-4.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-5.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-6.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-7.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-8.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-9.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-10.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-11.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-12.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-13.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-14.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-15.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-16.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-17.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-18.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-19.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-20.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-21.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-22.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-23.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-24.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-25.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-26.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-27.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-28.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-29.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-30.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-31.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-32.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-33.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-34.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-35.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-36.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-37.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-38.pdf' },
+    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-39.pdf' },
+];
+
+const datosEjercicios = [
+    { numero:'01', titulo:'Ejercicio 1', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 1', descripcion:'Integral indefinida', pdf:'pdfs/ejercicios/ejercicio1.pdf' },
+    { numero:'02', titulo:'Ejercicio 2', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 2', descripcion:'Sustitución', pdf:'pdfs/ejercicios/ejercicio2.pdf' },
+    { numero:'03', titulo:'Ejercicio 3', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 3', descripcion:'Integrales definidas', pdf:'pdfs/ejercicios/ejercicio3.pdf' },
+    { numero:'04', titulo:'Ejercicio 4', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 4', descripcion:'Aplicaciones', pdf:'pdfs/ejercicios/ejercicio4.pdf' }
+];
+
+// =========================
+// ABRIR CARRUSEL
+// =========================
+function abrirCarrusel(tipo) {
+    const modal = document.getElementById('carouselModal');
+    const track = document.getElementById('carousel-modal-track');
+    const titulo = document.getElementById('carouselTitle');
+
+    if (!modal || !track) return;
+
+    carruselModalActual.tipo = tipo;
+    carruselModalActual.indice = 0;
+
+    track.innerHTML = '';
+
+    const datos = (tipo === 'portfolio') ? datosPortfolio : datosEjercicios;
+    carruselModalActual.total = datos.length;
+
+    if (titulo) {
+        titulo.textContent = tipo === 'portfolio'
+            ? '📁 Portafolio de Trabajos'
+            : '✏️ Ejercicios de Clase';
     }
-    if (event.target === videoModal) {
-        cerrarModalVideo();
-    }
+
+    datos.forEach(item => {
+        const slide = document.createElement('div');
+        slide.className = 'carousel-modal-slide';
+
+        if (tipo === 'portfolio') {
+            slide.innerHTML = `
+                <div class="carousel-pdf-full">
+                    <iframe src="${item.pdf}"></iframe>
+                </div>
+            `;
+        } else {
+            slide.innerHTML = `
+                <div class="modal-item-card">
+                    <h3>${item.titulo}</h3>
+                    <p><b>Unidad:</b> ${item.unidad}</p>
+                    <iframe src="${item.pdf}" class="carousel-pdf"></iframe>
+                </div>
+            `;
+        }
+
+        track.appendChild(slide);
+    });
+
+    actualizarIndicadorCarrusel();
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 }
 
-// Cerrar modales con la tecla ESC
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        cerrarModal();
-        cerrarModalVideo();
+// =========================
+// MOVER CARRUSEL
+// =========================
+function moveCarouselModal(direction) {
+    const track = document.getElementById('carousel-modal-track');
+
+    carruselModalActual.indice += direction;
+
+    if (carruselModalActual.indice < 0) carruselModalActual.indice = carruselModalActual.total - 1;
+    if (carruselModalActual.indice >= carruselModalActual.total) carruselModalActual.indice = 0;
+
+    if (track) {
+        track.style.transform = `translateX(-${carruselModalActual.indice * 100}%)`;
+    }
+
+    actualizarIndicadorCarrusel();
+}
+
+function actualizarIndicadorCarrusel() {
+    const c = document.getElementById('carousel-current');
+    const t = document.getElementById('carousel-total');
+
+    if (c) c.textContent = carruselModalActual.indice + 1;
+    if (t) t.textContent = carruselModalActual.total;
+}
+
+// =========================
+// CERRAR CARRUSEL
+// =========================
+function cerrarCarruselModal() {
+    const modal = document.getElementById('carouselModal');
+    if (modal) modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// =========================
+// TECLADO
+// =========================
+document.addEventListener('keydown', function (event) {
+    const modal = document.getElementById('carouselModal');
+    if (event.key === 'Escape') cerrarCarruselModal();
+
+    if (modal && modal.style.display === 'flex') {
+        if (event.key === 'ArrowLeft') moveCarouselModal(-1);
+        if (event.key === 'ArrowRight') moveCarouselModal(1);
     }
 });
 
+// =========================
+// CLICK AFUERA CARRUSEL
+// =========================
+document.getElementById('carouselModal')?.addEventListener('click', function (e) {
+    if (e.target === this) cerrarCarruselModal();
+});
