@@ -64,18 +64,17 @@
             </div>
 
             <button class="btn-ingresar" onclick="scrollToContent()">
-                <span>Explorar Portafolio</span>
-                <div class="btn-icon-scroll">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
+                Explorar Portafolio
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5V19M12 19L19 12M12 19L5 12"/>
+                </svg>
             </button>
             
             <div class="scroll-indicator">
                 <div class="mouse">
                     <div class="wheel"></div>
                 </div>
+                <div class="scroll-text">Scroll</div>
             </div>
         </div>
     </div>
@@ -85,59 +84,92 @@
         <div class="container">
             <div class="section-title">
                 <h2>📁 Mi Trabajo Académico</h2>
-                <p>Trabajos y ejercicios de Cálculo Integral</p>
-            </div>
-
-            <!-- Botón de descarga completa -->
-            <div class="download-all-container">
-                <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.8em;">💾 Descarga Completa</h3>
-                <p style="color: #666; margin-bottom: 20px;">Descarga todos los trabajos en un solo archivo ZIP</p>
-                <a href="pdfs/portafolio_completo.zip" class="download-all-btn">
-                    📦 Descargar Todos los Trabajos
-                </a>
+                <p>Accede a todos los recursos del curso</p>
             </div>
 
             <!-- CARDS PRINCIPALES -->
-            <div class="main-cards-grid">
-                <!-- CARD PORTAFOLIO -->
-                <div class="main-card portafolio-card-main">
-                    <div class="main-card-header">
-                        <div class="main-card-icon">📄</div>
-                        <h3>Portafolio de Trabajos</h3>
-                        <p class="main-card-subtitle">4 trabajos realizados</p>
+            <div class="professional-cards-grid">
+                
+                <!-- CARD 1: PORTAFOLIO -->
+                <div class="pro-card card-portfolio">
+                    <div class="pro-card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
                     </div>
-                    <div class="main-card-body">
-                        <p class="main-card-description">Visualiza todos los trabajos entregados durante el semestre de Cálculo Integral.</p>
-                        <ul class="main-card-features">
-                            <li>✓ Trabajos individuales y grupales</li>
-                            <li>✓ Formato PDF descargable</li>
-                            <li>✓ Organizados cronológicamente</li>
-                        </ul>
-                    </div>
-                    <button class="main-card-btn" onclick="abrirCarrusel('portfolio')">
-                        👁️ Ver Todos los Trabajos
+                    <h3 class="pro-card-title">Portafolio de Trabajos</h3>
+                    <p class="pro-card-count">115 trabajos</p>
+                    <p class="pro-card-description">Trabajos individuales y grupales del semestre</p>
+                    <button class="pro-card-btn" onclick="abrirCarrusel('portfolio')">
+                        <span>Ver Trabajos</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
                     </button>
                 </div>
 
-                <!-- CARD EJERCICIOS -->
-                <div class="main-card ejercicios-card-main">
-                    <div class="main-card-header ejercicios-header">
-                        <div class="main-card-icon">✏️</div>
-                        <h3>Ejercicios de Clase</h3>
-                        <p class="main-card-subtitle">4 ejercicios resueltos</p>
+                <!-- CARD 2: EJERCICIOS -->
+                <div class="pro-card card-exercises">
+                    <div class="pro-card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
                     </div>
-                    <div class="main-card-body">
-                        <p class="main-card-description">Explora los ejercicios realizados durante las clases presenciales.</p>
-                        <ul class="main-card-features">
-                            <li>✓ Ejercicios paso a paso</li>
-                            <li>✓ Diferentes niveles de dificultad</li>
-                            <li>✓ Aplicaciones prácticas</li>
-                        </ul>
-                    </div>
-                    <button class="main-card-btn ejercicios-btn" onclick="abrirCarrusel('exercises')">
-                        👁️ Ver Todos los Ejercicios
+                    <h3 class="pro-card-title">Materia y Ejercicios de Clase</h3>
+                    <p class="pro-card-count">47 unidades</p>
+                    <p class="pro-card-description">Ejercicios resueltos en clase y materia</p>
+                    <button class="pro-card-btn" onclick="abrirCarrusel('exercises')">
+                        <span>Ver Ejercicios</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
                     </button>
                 </div>
+
+                <!-- CARD 3: DIAPOSITIVAS -->
+                <div class="pro-card card-slides">
+                    <div class="pro-card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="pro-card-title">Diapositivas de las Unidades</h3>
+                    <p class="pro-card-count">44 unidades</p>
+                    <p class="pro-card-description">Material entregado por el Docente</p>
+                    <button class="pro-card-btn" onclick="abrirCarrusel('slides')">
+                        <span>Ver Diapositivas</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- CARD 4: EVALUACIONES -->
+                <div class="pro-card card-tests">
+                    <div class="pro-card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3 class="pro-card-title">Evaluaciones y Pruebas</h3>
+                    <p class="pro-card-count">16 unidades</p>
+                    <p class="pro-card-description">Pruebas y evaluaciones realizadas en la plataforma</p>
+                    <button class="pro-card-btn" onclick="abrirCarrusel('tests')">
+                        <span>Ver Evaluaciones</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -470,6 +502,16 @@
                                     <button onclick="verVideo('m25dbmu_Eiw', 'Centro de Masa usando integrales')" class="btn-watch">Ver Video</button>
                                 </div>
                             </div>
+                            <div class="video-card-moderna">
+                                <div class="video-thumbnail" onclick="verVideo('uCM0knFul-g', 'Concepto de TRABAJO, fórmula y ejemplos')">
+                                    <img src="https://img.youtube.com/vi/uCM0knFul-g/maxresdefault.jpg" alt="Video">
+                                    <div class="play-overlay">▶</div>
+                                </div>
+                                <div class="video-info">
+                                    <h4>FÍSICA: Concepto de TRABAJO, fórmula y ejemplos</h4>
+                                    <button onclick="verVideo('uCM0knFul-g', 'Concepto de TRABAJO, fórmula y ejemplos')" class="btn-watch">Ver Video</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -478,14 +520,10 @@
     </div>
 
     <!-- MODAL CARRUSEL -->
-    <!-- MODAL CARRUSEL FULLSCREEN -->
     <div id="carouselModal">
-
         <div class="carousel-modal-content">
-
             <!-- HEADER -->
             <div class="carousel-modal-header">
-
                 <div class="carousel-left">
                     <span class="carousel-title" id="carouselTitle">📁 Portafolio</span>
                 </div>
@@ -499,26 +537,20 @@
                 </div>
 
                 <button class="carousel-btn next" onclick="moveCarouselModal(1)">❯</button>
-
             </div>
-
 
             <!-- BODY FULLSCREEN -->
             <div class="carousel-modal-body">
                 <div id="carousel-modal-track"></div>
             </div>
-
         </div>
-
     </div>
 
-
-
-    <!-- MODAL PARA VER PDFs -->
+    <!-- MODAL PARA VER PDFs - PANTALLA COMPLETA CON HEADER -->
     <div id="pdfModal" class="modal">
         <div class="modal-content-pdf">
             <div class="modal-header">
-                <h3 id="pdfTitle"></h3>
+                <h3 id="pdfTitle">Documento</h3>
                 <button class="modal-close" onclick="cerrarModal()">&times;</button>
             </div>
             <div class="modal-body-pdf">
@@ -544,3 +576,4 @@
 
 </body>
 </html>
+
