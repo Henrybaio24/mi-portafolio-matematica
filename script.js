@@ -1,207 +1,261 @@
-// =========================
-// SCROLL
-// =========================
-function scrollToContent() {
-    const el = document.getElementById('portafolio');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+const carouselData = {
+    portfolio: {
+        title: '📁 Portafolio de Trabajos',
+        items: [
+            {
+                title: 'Portafolio Digital',
+                description: 'Integral Indefinida - Ejercicios básicos',
+                pdf: 'pdfs/PORTAFOLIO DIGITAL - HENRY MONTENEGRO.pdf',
+                thumbnail: 'thumbnails/trabajo1.jpg'
+            }
+        ]
+    },
+    exercises: {
+        title: '✏️ Materia y Ejercicios de Clase',
+        items: [
+            {
+                title: 'Cuaderno',
+                description: 'Antiderivadas y primitivas',
+                pdf: 'pdfs/MATERIA Y EJERCICIOS - HENRY MONTENEGRO.pdf',
+                thumbnail: 'thumbnails/ejercicio1.jpg'
+            }
+        ]
+    },
+    slides: {
+        title: '📊 Diapositivas',
+        items: [
+            {
+                title: 'Diapositivas de las Unidades',
+                description: 'Integral Indefinida',
+                pdf: 'pdfs/DIAPOSITIVAS - HENRY MONTENEGRO.pdf',
+                thumbnail: 'thumbnails/slides1.jpg'
+            }
+        ]
+    },
+    tests: {
+        title: '📝 Pruebas',
+        items: [
+            {
+                title: 'Capturas de las evaluaciones de las 4 unidades',
+                description: 'Evaluación Unidad 1-2-3-4',
+                pdf: 'pdfs/PRUEBAS - HENRY MONTENEGRO.pdf',
+                thumbnail: 'thumbnails/test1.jpg'
+            },
+        ]
+    }
+};
+
+// ============================================
+// VARIABLES GLOBALES PARA EL CARRUSEL
+// ============================================
+
+let currentCarouselType = '';
+let currentCarouselIndex = 0;
+let currentCarouselItems = [];
+
+// ============================================
+// FUNCIÓN PARA ABRIR EL CARRUSEL - MUESTRA PDF DIRECTO
+// ============================================
+
+function abrirCarrusel(type) {
+    const data = carouselData[type];
+    
+    if (!data) {
+        console.error('Tipo de carrusel no encontrado:', type);
+        return;
+    }
+    
+    currentCarouselType = type;
+    currentCarouselItems = data.items;
+    currentCarouselIndex = 0;
+    
+    // ABRIR DIRECTAMENTE EL PRIMER PDF
+    if (currentCarouselItems.length > 0) {
+        const firstItem = currentCarouselItems[0];
+        verPDF(firstItem.pdf, firstItem.title);
+    }
 }
 
-// =========================
-// MODAL VIDEOS
-// =========================
-function verVideo(videoId, titulo) {
-    const modal = document.getElementById('videoModal');
-    const videoPlayer = document.getElementById('videoPlayer');
-    const videoTitle = document.getElementById('videoTitle');
+// ============================================
+// CARGAR ITEMS EN EL CARRUSEL
+// ============================================
 
-    if (!modal || !videoPlayer || !videoTitle) return;
+function loadCarouselItems() {
+    const track = document.getElementById('carousel-modal-track');
+    track.innerHTML = '';
+    
+    currentCarouselItems.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'carousel-modal-item';
+        itemDiv.innerHTML = `
+            <div class="carousel-item-content">
+                <div class="carousel-item-preview" onclick="verPDF('${item.pdf}', '${item.title}')">
+                    <div class="pdf-preview-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <p>Click para ver PDF</p>
+                    </div>
+                </div>
+                <div class="carousel-item-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                    <div class="carousel-item-actions">
+                        <button onclick="verPDF('${item.pdf}', '${item.title}')" class="btn-view-pdf">
+                            👁️ Ver PDF
+                        </button>
+                        <a href="${item.pdf}" download class="btn-download-pdf">
+                            💾 Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        track.appendChild(itemDiv);
+    });
+}
 
-    videoTitle.textContent = titulo;
-    videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    modal.style.display = 'flex';
+// ============================================
+// ACTUALIZAR VISTA DEL CARRUSEL
+// ============================================
+
+function updateCarouselView() {
+    const track = document.getElementById('carousel-modal-track');
+    const offset = -currentCarouselIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+    
+    document.getElementById('carousel-current').textContent = currentCarouselIndex + 1;
+    
+    // Actualizar estado de los botones
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    
+    prevBtn.disabled = currentCarouselIndex === 0;
+    nextBtn.disabled = currentCarouselIndex === currentCarouselItems.length - 1;
+}
+
+// ============================================
+// MOVER CARRUSEL
+// ============================================
+
+function moveCarouselModal(direction) {
+    const newIndex = currentCarouselIndex + direction;
+    
+    if (newIndex >= 0 && newIndex < currentCarouselItems.length) {
+        currentCarouselIndex = newIndex;
+        updateCarouselView();
+    }
+}
+
+// ============================================
+// CERRAR CARRUSEL
+// ============================================
+
+function cerrarCarruselModal() {
+    const modal = document.getElementById('carouselModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ============================================
+// VER PDF EN MODAL - PANTALLA COMPLETA CON HEADER
+// ============================================
+
+function verPDF(pdfUrl, title) {
+    const modal = document.getElementById('pdfModal');
+    const viewer = document.getElementById('pdfViewer');
+    const titleElement = document.getElementById('pdfTitle');
+    
+    titleElement.textContent = title;
+    viewer.src = pdfUrl;
+    modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+}
+
+function cerrarModal() {
+    const modal = document.getElementById('pdfModal');
+    const viewer = document.getElementById('pdfViewer');
+    modal.style.display = 'none';
+    viewer.src = '';
+    document.body.style.overflow = 'auto';
+}
+
+// ============================================
+// VER VIDEO EN MODAL
+// ============================================
+
+function verVideo(videoId, title) {
+    const modal = document.getElementById('videoModal');
+    const player = document.getElementById('videoPlayer');
+    const titleElement = document.getElementById('videoTitle');
+    
+    titleElement.textContent = title;
+    player.src = `https://www.youtube.com/embed/${videoId}`;
+    modal.style.display = 'flex';
 }
 
 function cerrarModalVideo() {
     const modal = document.getElementById('videoModal');
-    const videoPlayer = document.getElementById('videoPlayer');
-
-    if (!modal || !videoPlayer) return;
-
+    const player = document.getElementById('videoPlayer');
     modal.style.display = 'none';
-    videoPlayer.src = '';
-    document.body.style.overflow = 'auto';
+    player.src = '';
 }
 
-// =========================
-// CERRAR VIDEO CLICK AFUERA
-// =========================
-window.addEventListener('click', function (event) {
-    const videoModal = document.getElementById('videoModal');
-    if (event.target === videoModal) cerrarModalVideo();
-});
+// ============================================
+// SCROLL A CONTENIDO
+// ============================================
 
-// =========================
-// CARRUSEL PDF
-// =========================
-let carruselModalActual = {
-    tipo: '',
-    indice: 0,
-    total: 0
-};
-
-const datosPortfolio = [
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-1.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-2.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-3.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-4.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-5.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-6.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-7.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-8.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-9.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-10.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-11.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-12.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-13.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-14.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-15.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-16.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-17.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-18.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-19.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-20.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-21.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-22.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-23.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-24.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-25.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-26.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-27.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-28.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-29.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-30.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-31.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-32.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-33.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-34.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-35.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-36.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-37.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-38.pdf' },
-    { numero:'', titulo:'', subtitulo:'', fecha:'', tema:'', pdf:'pdfs/CamScanner 25-01-2026 17.24-39.pdf' },
-];
-
-const datosEjercicios = [
-    { numero:'01', titulo:'Ejercicio 1', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 1', descripcion:'Integral indefinida', pdf:'pdfs/ejercicios/ejercicio1.pdf' },
-    { numero:'02', titulo:'Ejercicio 2', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 2', descripcion:'Sustitución', pdf:'pdfs/ejercicios/ejercicio2.pdf' },
-    { numero:'03', titulo:'Ejercicio 3', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 3', descripcion:'Integrales definidas', pdf:'pdfs/ejercicios/ejercicio3.pdf' },
-    { numero:'04', titulo:'Ejercicio 4', subtitulo:'Ejercicios de clase', fecha:'DD/MM/AAAA', unidad:'Unidad 4', descripcion:'Aplicaciones', pdf:'pdfs/ejercicios/ejercicio4.pdf' }
-];
-
-// =========================
-// ABRIR CARRUSEL
-// =========================
-function abrirCarrusel(tipo) {
-    const modal = document.getElementById('carouselModal');
-    const track = document.getElementById('carousel-modal-track');
-    const titulo = document.getElementById('carouselTitle');
-
-    if (!modal || !track) return;
-
-    carruselModalActual.tipo = tipo;
-    carruselModalActual.indice = 0;
-
-    track.innerHTML = '';
-
-    const datos = (tipo === 'portfolio') ? datosPortfolio : datosEjercicios;
-    carruselModalActual.total = datos.length;
-
-    if (titulo) {
-        titulo.textContent = tipo === 'portfolio'
-            ? '📁 Portafolio de Trabajos'
-            : '✏️ Ejercicios de Clase';
-    }
-
-    datos.forEach(item => {
-        const slide = document.createElement('div');
-        slide.className = 'carousel-modal-slide';
-
-        if (tipo === 'portfolio') {
-            slide.innerHTML = `
-                <div class="carousel-pdf-full">
-                    <iframe src="${item.pdf}"></iframe>
-                </div>
-            `;
-        } else {
-            slide.innerHTML = `
-                <div class="modal-item-card">
-                    <h3>${item.titulo}</h3>
-                    <p><b>Unidad:</b> ${item.unidad}</p>
-                    <iframe src="${item.pdf}" class="carousel-pdf"></iframe>
-                </div>
-            `;
-        }
-
-        track.appendChild(slide);
+function scrollToContent() {
+    document.getElementById('portafolio').scrollIntoView({ 
+        behavior: 'smooth' 
     });
-
-    actualizarIndicadorCarrusel();
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
 }
 
-// =========================
-// MOVER CARRUSEL
-// =========================
-function moveCarouselModal(direction) {
-    const track = document.getElementById('carousel-modal-track');
+// ============================================
+// CERRAR MODALES CON ESC
+// ============================================
 
-    carruselModalActual.indice += direction;
-
-    if (carruselModalActual.indice < 0) carruselModalActual.indice = carruselModalActual.total - 1;
-    if (carruselModalActual.indice >= carruselModalActual.total) carruselModalActual.indice = 0;
-
-    if (track) {
-        track.style.transform = `translateX(-${carruselModalActual.indice * 100}%)`;
-    }
-
-    actualizarIndicadorCarrusel();
-}
-
-function actualizarIndicadorCarrusel() {
-    const c = document.getElementById('carousel-current');
-    const t = document.getElementById('carousel-total');
-
-    if (c) c.textContent = carruselModalActual.indice + 1;
-    if (t) t.textContent = carruselModalActual.total;
-}
-
-// =========================
-// CERRAR CARRUSEL
-// =========================
-function cerrarCarruselModal() {
-    const modal = document.getElementById('carouselModal');
-    if (modal) modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// =========================
-// TECLADO
-// =========================
-document.addEventListener('keydown', function (event) {
-    const modal = document.getElementById('carouselModal');
-    if (event.key === 'Escape') cerrarCarruselModal();
-
-    if (modal && modal.style.display === 'flex') {
-        if (event.key === 'ArrowLeft') moveCarouselModal(-1);
-        if (event.key === 'ArrowRight') moveCarouselModal(1);
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        cerrarCarruselModal();
+        cerrarModal();
+        cerrarModalVideo();
     }
 });
 
-// =========================
-// CLICK AFUERA CARRUSEL
-// =========================
-document.getElementById('carouselModal')?.addEventListener('click', function (e) {
-    if (e.target === this) cerrarCarruselModal();
+// ============================================
+// CERRAR MODALES AL HACER CLICK FUERA
+// ============================================
+
+window.onclick = function(event) {
+    const carouselModal = document.getElementById('carouselModal');
+    const pdfModal = document.getElementById('pdfModal');
+    const videoModal = document.getElementById('videoModal');
+    
+    if (event.target === carouselModal) {
+        cerrarCarruselModal();
+    }
+    if (event.target === pdfModal) {
+        cerrarModal();
+    }
+    if (event.target === videoModal) {
+        cerrarModalVideo();
+    }
+}
+
+// ============================================
+// NAVEGACIÓN CON TECLADO EN CARRUSEL
+// ============================================
+
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('carouselModal');
+    if (modal.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') {
+            moveCarouselModal(-1);
+        } else if (e.key === 'ArrowRight') {
+            moveCarouselModal(1);
+        }
+    }
 });
+
